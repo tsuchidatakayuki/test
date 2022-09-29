@@ -33,6 +33,12 @@
 'use strict';
 var c = document.getElementById('canvas');
 var ctx = c.getContext('2d');
+
+//土田追加start 20220929
+ctx.fillStyle = "#FFFFFF";//筆に白い絵の具をつけて
+ctx.fillRect(0,0,400,250);//四角を描く
+//土田追加end 20220929
+
 var dragging = false;
 var lastPos;
 
