@@ -11,6 +11,9 @@
 <form name="formOption">
 <input id="noSwipe" type="checkbox" /><label for="noSwipe">Canvas 内のスワイプを無効にする</label>
 <button onclick="clear()">クリア</button>
+<!--土田追加start 20220929 -->
+<a onclick="downloadImg()" id="download" class="btn btn-primary">画像ダウンロード</a>
+<!--土田追加end 20220929 -->
 </form>
 
 <ul>
@@ -145,6 +148,24 @@ function clear() {
     showMessageMouseMove("(mousemove)");
     showMessageTouchMove("(touchmove)");
 }
+//土田追加start 20220929 
+function downloadImg(){
+ //   const c = document.getElementById('canvas1');
+    c.toBlob((blob) => {
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        document.body.appendChild(a);
+        a.download = 'foo.png';
+        a.href = url;
+        a.click();
+        a.remove();
+        setTimeout(() => {
+            URL.revokeObjectURL(url);
+        }, 1E4);
+    }, 'image/png');
+}
+//土田追加end 20220929 
+
    </script>
 
    </body>
